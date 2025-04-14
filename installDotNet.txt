@@ -1,0 +1,12 @@
+-
+sudo apt-get update
+
+sudo apt-get install -y software-properties-common
+
+sudo add-apt-repository ppa:dotnet/backports
+
+sudo apt install dotnet-sdk-9.0
+
+
+
+--certificate permission: chmod 644 ./certs/aspnetapp.pfx

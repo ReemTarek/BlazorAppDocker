@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2019-latest
@@ -10,19 +9,23 @@ services:
       - "1433:1433"
     networks:
       - appnet
-
   blazorapp:
     build:
       context: .
       dockerfile: BlazorAppDocker/Dockerfile
     ports:
       - "8080:8080"
+      - "443:443"
+    volumes:
+      - ./certs:/app/certs
     depends_on:
       - sqlserver
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Publish
+      - ASPNETCORE_URLS=https://+:443
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/certs/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=yourpassword
     networks:
       - appnet
-
 networks:
   appnet:

@@ -4,6 +4,11 @@
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 USER $APP_UID
 WORKDIR /app
+EXPOSE 80
+ENV ASPNETCORE_URLS=https://+:443
+ENV ASPNETCORE_Kestrel_CertificatesDefault_Path=/https/aspnetapp.pfx
+ENV ASPNETCORE_Kestrel_CertificatesDefault_Password=yourpassword
+EXPOSE 443
 
 
 
