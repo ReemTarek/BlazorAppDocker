@@ -23,8 +23,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Publish
       - ASPNETCORE_URLS=https://+:443
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/certs/aspnetapp.pfx
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=yourpassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/app/certs/aspnetcert.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=1234
     networks:
       - appnet
 networks:
